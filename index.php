@@ -8,19 +8,35 @@
 </head>
 <body>
 	<?php
+	include('functions.php');
+
+	$obj = new basicData;
+
 	if(isset($_POST['submit']) AND $_SERVER['REQUEST_METHOD'] == "POST" ){
 		$name  	= $_POST['name'];
 		$email 	= $_POST['email'];
-		$cell 		= $_POST['cell'];
+		$cell 	= $_POST['cell'];
 		$batch 	= $_POST['batch'];
 		$image 	= $_FILES['image']['name'];
-		$imaget 	= $_FILES['image']['tmp_name'];
+		$imaget = $_FILES['image']['tmp_name'];
+
+		$exp 	= explode('.',$image);
+		$ext 	= strtolower(end($exp ));
+
+		$formate = array('jpg','jpeg','png','gif');
+		$uimage  = md5(time().$image).".".$ext;
 
 
 		if(empty($name) || empty($email) || empty($cell) || empty($batch) || empty($image)){
 			echo "<h2 style ='color: red;'> File Must Be Not Empty</h2>";
 		}elseif(filter_var($email, FILTER_VALIDATE_EMAIL) == false){
 			echo "<h2 style ='color: red;'> Invalid Email Address</h2>";
+		}elseif(in_array($ext,$formate) == false){
+			echo "<h2 style ='color: red;'> Image Formate Invalid</h2>";
+		}else{
+			$data = $obj -> studentDataInsert($name,$email,$cell,$batch,$uimage,$imaget);
+
+			echo $data;
 		}
 	}
 	
