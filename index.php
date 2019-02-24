@@ -77,66 +77,24 @@
 	<hr>
 	<div class="student-data">
 		<table>
+
+			<?Php
+				$student = $obj -> dataaso();
+				while($dd = $student-> fetch_assoc()):
+
+			?>
 			<tr>
-				<td><a href="#"><img src="img/p.jpg" alt=""></a></td>
+				<td><a href="#"><img src="img/<?php echo $dd['image'];?>" alt=""></a></td>
 				<td>
-					<h2>Mark Zukarbark</h2>
-					<h3>mar01@gmail.com</h3>
-					<p>01770766181</p>
+					<h2><?php echo $dd['name'];?></h2>
+					<h3><?php echo $dd['email'];?></h3>
+					<p><?php echo $dd['cell'];?></p>
 					<a href="#">Edit</a>
 					<a href="#">Delete</a>
 				</td>
 			</tr>
-			<tr>
-				<td><a href="#"><img src="img/p.jpg" alt=""></a></td>
-				<td>
-					<h2>Mark Zukarbark</h2>
-					<h3>mar01@gmail.com</h3>
-					<p>01770766181</p>
-					<a href="#">Edit</a>
-					<a href="#">Delete</a>
-				</td>
-			</tr>
-			<tr>
-				<td><a href="#"><img src="img/p.jpg" alt=""></a></td>
-				<td>
-					<h2>Mark Zukarbark</h2>
-					<h3>mar01@gmail.com</h3>
-					<p>01770766181</p>
-					<a href="#">Edit</a>
-					<a href="#">Delete</a>
-				</td>
-			</tr>
-			<tr>
-				<td><a href="#"><img src="img/p.jpg" alt=""></a></td>
-				<td>
-					<h2>Mark Zukarbark</h2>
-					<h3>mar01@gmail.com</h3>
-					<p>01770766181</p>
-					<a href="#">Edit</a>
-					<a href="#">Delete</a>
-				</td>
-			</tr>
-			<tr>
-				<td><a href="#"><img src="img/p.jpg" alt=""></a></td>
-				<td>
-					<h2>Mark Zukarbark</h2>
-					<h3>mar01@gmail.com</h3>
-					<p>01770766181</p>
-					<a href="#">Edit</a>
-					<a href="#">Delete</a>
-				</td>
-			</tr>
-			<tr>
-				<td><a href="#"><img src="img/p.jpg" alt=""></a></td>
-				<td>
-					<h2>Mark Zukarbark</h2>
-					<h3>mar01@gmail.com</h3>
-					<p>01770766181</p>
-					<a href="#">Edit</a>
-					<a href="#">Delete</a>
-				</td>
-			</tr>
+		<?php endwhile;?>
+			
 		</table>
 	</div>
 </body>
