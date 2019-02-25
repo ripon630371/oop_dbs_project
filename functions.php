@@ -46,6 +46,17 @@
 				return false;
 			}
 		}
+		// Email Check 
+		public function emailAseKiNa($email){
+			$sql = "SELECT email FROM student_info WHERE email = '$email'";
+			$data = $this-> connection -> query($sql);
+
+			if( $data -> num_rows > 0){
+				return false;
+			}else{
+				return true;
+			}
+		}
 
 	}
 

@@ -26,6 +26,8 @@
 		$formate = array('jpg','jpeg','png','gif');
 		$uimage  = md5(time().$image).".".$ext;
 
+		$emailcheck = $obj -> emailAseKiNa($email);
+
 
 		if(empty($name) || empty($email) || empty($cell) || empty($batch) || empty($image)){
 			echo "<h2 style ='color: red;'> File Must Be Not Empty</h2>";
@@ -33,6 +35,8 @@
 			echo "<h2 style ='color: red;'> Invalid Email Address</h2>";
 		}elseif(in_array($ext,$formate) == false){
 			echo "<h2 style ='color: red;'> Image Formate Invalid</h2>";
+		}elseif ($emailcheck == false) {
+			echo "<h2 style ='color: red;'> Email Already Exists </h2>";
 		}else{
 			$data = $obj -> studentDataInsert($name,$email,$cell,$batch,$uimage,$imaget);
 
