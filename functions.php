@@ -27,7 +27,7 @@
 
 		// data dorar way database theke 
 		public function dataaso(){
-			$sql = "SELECT * FROM student_info ";
+			$sql = "SELECT * FROM student_info ORDER BY id DESC ";
 			$data = $this-> connection -> query($sql);
 			if($data){
 				return $data;
@@ -35,7 +35,17 @@
 				return false;
 			}
 		}
+		// delete method delete query 
+		public function deletekoren($id){
+			$sql = "DELETE FROM student_info WHERE id = '$id'";
+			$data = $this-> connection -> query($sql);
 
+			if($data){
+				return true;
+			}else{
+				return false;
+			}
+		}
 
 	}
 

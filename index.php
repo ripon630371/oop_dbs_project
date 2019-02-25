@@ -90,7 +90,7 @@
 					<h3><?php echo $dd['email'];?></h3>
 					<p><?php echo $dd['cell'];?></p>
 					<a href="#">Edit</a>
-					<a href="#">Delete</a>
+					<a href="delete.php?id=<?php echo $dd['id'];?>">Delete</a>
 				</td>
 			</tr>
 		<?php endwhile;?>
