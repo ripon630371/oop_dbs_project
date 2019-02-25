@@ -88,7 +88,7 @@
 
 			?>
 			<tr>
-				<td><a href="#"><img src="img/<?php echo $dd['image'];?>" alt=""></a></td>
+				<td><a href="profile.php?id=<?php echo $dd['id'];?>"><img src="img/<?php echo $dd['image'];?>" alt=""></a></td>
 				<td>
 					<h2><?php echo $dd['name'];?></h2>
 					<h3><?php echo $dd['email'];?></h3>

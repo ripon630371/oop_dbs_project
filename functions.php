@@ -58,6 +58,19 @@
 			}
 		}
 
+		// amar profile code 
+		public function amarprofile($id){
+			$sql = "SELECT * FROM student_info WHERE id = '$id'";
+			$data = $this-> connection -> query($sql);
+
+			if(	$data ){
+				return $data;
+			}else{
+				return false;
+			}
+
+		}
+
 	}
 
 ?>
