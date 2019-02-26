@@ -93,7 +93,7 @@
 					<h2><?php echo $dd['name'];?></h2>
 					<h3><?php echo $dd['email'];?></h3>
 					<p><?php echo $dd['cell'];?></p>
-					<a href="#">Edit</a>
+					<a href="update.php?id=<?php echo $dd['id'];?>">Edit</a>
 					<a href="delete.php?id=<?php echo $dd['id'];?>">Delete</a>
 				</td>
 			</tr>

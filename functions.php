@@ -71,6 +71,19 @@
 
 		}
 
+		// profile picture update 
+		public function chobiProborton($uimagename, $uimaget, $id ){
+			$sql = "UPDATE student_info SET image='$uimagename' WHERE id='$id'";
+			move_uploaded_file( $uimaget , 'img/'.$uimagename);
+			$data = $this-> connection -> query($sql);
+
+			if($data){
+				return "<h2 style='color:green;'> Image Updated Successfull </h2>";
+			}else{
+				return "<h2 style='color:red;'> Image Updated Faild </h2>";
+			}
+		}
+
 	}
 
 ?>
