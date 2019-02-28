@@ -84,6 +84,18 @@
 			}
 		}
 
+		// user data update function 
+		public function userdataupdate($name,$email,$cell,$batch,$id){
+			$sql = "UPDATE student_info SET name='$name',email='$email',cell='$cell',batch='$batch', WHERE id='$id'";
+			$data = $this-> connection -> query($sql);
+
+			if($data){
+				return "<h2 style='color:green;'> Data Update Successfull </h2>";
+			}else{
+				return "<h2 style='color:red;'> Data Update Failed </h2>";
+			}
+		}
+
 	}
 
 ?>

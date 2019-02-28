@@ -88,14 +88,33 @@
 			
 
 		}
+
+		if(isset($_POST['submit2']) AND $_SERVER['REQUEST_METHOD'] == "POST" ){
+			$name = $_POST['name'];
+			$email = $_POST['email'];
+			$cell = $_POST['cell'];
+			$batch = $_POST['batch'];
+
+			if(empty($name) || empty($email) || empty($cell) || empty($batch) ){
+				$datamess = "<h2 style='color:red;'> Field Must Be Not Empty  </h2>";
+			}elseif(filter_var($email,FILTER_VALIDATE_EMAIL) == false){
+				$datamess = "<h2 style='color:red;'> Invalid Email Address  </h2>";	
+			}else{
+
+				$obj -> userdataupdate($name,$email,$cell,$batch,$id);
+			}
+		}
 	?>
 
 
 
 	<div class="pp">
 		<?php
-			if( isset($imgmess) ){
+		if( isset($imgmess) ){
 			echo $imgmess; 
+		}
+		if( isset($datamess) ){
+			echo $datamess; 
 		}
 
 		?>
@@ -109,26 +128,28 @@
 		<hr>
 		<div class="info">
 			<table>
-				<tr>
-					<td>Name:</td>
-					<td><input type="text" value="<?php echo $akla['name']; ?>"></td>
-				</tr>
-				<tr>
-					<td>Email:</td>
-					<td><input type="text" value="<?php echo $akla['email']; ?>"></td>
-				</tr>
-				<tr>
-					<td>Cell:</td>
-					<td><input type="text" value="<?php echo $akla['cell']; ?>"></td>
-				</tr>
-				<tr>
-					<td>Batch:</td>
-					<td><input type="text" value="<?php echo $akla['batch']; ?>"></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td><input type="submit" value="Update Data"></td>
-				</tr>
+				<form action="<?php echo $_SERVER['PHP_SELF']; ?>?id=<?php echo  $akla['id']; ?>" method="POST">
+					<tr>
+						<td>Name:</td>
+						<td><input name="name" type="text" value="<?php echo $akla['name']; ?>"></td>
+					</tr>
+					<tr>
+						<td>Email:</td>
+						<td><input name="email" type="text" value="<?php echo $akla['email']; ?>"></td>
+					</tr>
+					<tr>
+						<td>Cell:</td>
+						<td><input name="cell" type="text" value="<?php echo $akla['cell']; ?>"></td>
+					</tr>
+					<tr>
+						<td>Batch:</td>
+						<td><input name="batch" type="text" value="<?php echo $akla['batch']; ?>"></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="submit" name="submit2" value="Update Data"></td>
+					</tr>
+				</form>
 			</table>
 		</div>
 		<a href="index.php">Back Home Page</a>
